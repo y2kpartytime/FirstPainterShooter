@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddqa84l8runo4"]
+
+[ext_resource type="Texture2D" uid="uid://ckrp4xlp3jq6" path="res://textures/blue_splat01.png" id="1_dwln7"]
+
+[node name="BlueSplat01" type="Sprite3D"]
+modulate = Color(0.298039, 0.827451, 1, 1)
+texture = ExtResource("1_dwln7")
