@@ -17,7 +17,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 ## Decals and Paint settings
-var ice_decal = preload(\"res://blue_decal.tscn\")
+var ice_decal = preload(\"res://scenes/BlueDecal.tscn\")
 var green_decal = preload(\"res://green_splat.tscn\")
 
 var paint_types: Array[String] = [\"ice\", \"green\", \"explosive\"]
@@ -103,6 +103,7 @@ func _input(event: InputEvent):
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = SubResource("GDScript_whaw8")
+mouse_sensitivity = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_q0peq")

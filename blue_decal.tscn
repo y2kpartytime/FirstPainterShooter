@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dh5wmwnridgcj"]
-
-[ext_resource type="Texture2D" uid="uid://ckrp4xlp3jq6" path="res://textures/blue_splat01.png" id="1_tbamg"]
-
-[node name="Decal" type="Decal"]
-texture_albedo = ExtResource("1_tbamg")
-modulate = Color(0.698039, 0.776471, 1, 1)

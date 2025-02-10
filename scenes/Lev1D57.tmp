@@ -7,6 +7,7 @@
 
 [node name="Player" parent="." instance=ExtResource("1_3yoq0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.52087, 2.28638, -0.719423)
+mouse_sensitivity = null
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.896664, 0.442711, 0, -0.442711, 0.896664, 0, 40.9746, 25.8346)

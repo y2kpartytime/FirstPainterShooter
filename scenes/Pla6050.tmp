@@ -17,8 +17,8 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 ## Decals and Paint settings
-var ice_decal = preload(\"res://blue_decal.tscn\")
-var green_decal = preload(\"res://green_splat.tscn\")
+var ice_decal = preload(\"res://scenes/BlueDecal.tscn\")
+var green_decal = preload(\"res://scenes/GreenDecal.tscn\")
 
 var paint_types: Array[String] = [\"ice\", \"green\", \"explosive\"]
 var current_paint_index: int = 0
