@@ -1,15 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://tw2wpjouay68"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_va4oj"]
-gravity = Vector3(0, -5, 0)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cyl13"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_hvtd0"]
-size = Vector2(0.1, 0.1)
+[sub_resource type="QuadMesh" id="QuadMesh_hoonu"]
 
 [node name="GPUParticles3D" type="GPUParticles3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00249982, -0.00688672, 0.0176064)
 amount = 15
-explosiveness = 0.15
-randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_va4oj")
-draw_pass_1 = SubResource("PlaneMesh_hvtd0")
+process_material = SubResource("ParticleProcessMaterial_cyl13")
+draw_pass_1 = SubResource("QuadMesh_hoonu")
