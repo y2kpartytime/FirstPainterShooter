@@ -10,7 +10,7 @@ albedo_texture = ExtResource("1_778tq")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_v3we8"]
 
-[node name="P" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_odnct")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

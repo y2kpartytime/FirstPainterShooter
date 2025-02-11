@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0p6vapt7f7ul"]
+[gd_scene load_steps=5 format=3 uid="uid://c0p6vapt7f7ul"]
 
 [ext_resource type="Texture2D" uid="uid://bxyhkiqt0y3ia" path="res://icon.svg" id="1_778tq"]
-[ext_resource type="Script" path="res://scenes/assets/PlayerScript.gd" id="1_odnct"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q0peq"]
 
@@ -10,8 +9,7 @@ albedo_texture = ExtResource("1_778tq")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_v3we8"]
 
-[node name="P" type="CharacterBody3D"]
-script = ExtResource("1_odnct")
+[node name="Player" type="CharacterBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_q0peq")

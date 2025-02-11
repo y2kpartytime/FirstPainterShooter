@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0p6vapt7f7ul"]
+
+[ext_resource type="Texture2D" uid="uid://bxyhkiqt0y3ia" path="res://icon.svg" id="1_778tq"]
+
+[sub_resource type="GDScript" id="GDScript_whaw8"]
+resource_name = "PlayerScript"
+script/source = "extends CharacterBody3D
+
+class_name P
+
+## Camera
+@export var mouse_sensitivity: float = 0.1
+@onready var camera: Camera3D = $Camera3D
+
+## Mouse settings
+var min_pitch: float = -90.0
+var max_pitch: float = 90.0
+var pitch: float = 0.0
+
+## Movement
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+
+## Decals and Paint settings
+var ice_decal = preload(\"res://scenes/decals/BlueDecal.tscn\")
+var green_decal = preload(\"res://scenes/decals/GreenDecal.tscn\")
+var pink_decal = preload(\"res://scenes/decals/PinkDecal.tscn\")
+var paint_types: Array[String] = [\"blue\", \"green\", \"pink\"]
+var current_paint_index: int = 0
+
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func _physics_process(delta: float) -> void:
+	## Gravity
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+
+	## Jumping
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		
+		if self.is_in_decal_area:
+			velocity.y = JUMP_VELOCITY * 3
+
+
+	## Movement and Direction
+	var input_dir := Input.get_vector(\"Left\", \"Right\", \"Forward\", \"Backward\")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	if Input.is_action_just_pressed(\"Shoot\"):
+		_shoot()
+
+## Quit
+	if Input.is_action_just_pressed(\"ui_cancel\"):
+		get_tree().quit()
+
+	_paintSwap()
+	move_and_slide()
+
+## Decal logic // Rotates and sets decal facing correct way
+
+func spawn_decal(decal_scene: PackedScene, position: Vector3, normal: Vector3):
+	var decal_instance = decal_scene.instantiate()
+	get_parent().add_child(decal_instance)
+	
+	decal_instance.position = position + normal * 0.01
+	decal_instance.look_at(normal, Vector3.UP)
+	if normal != Vector3.DOWN:
+		decal_instance.rotate_object_local(Vector3(1, 0, 0), 90)
+	else:
+		decal_instance.rotate_object_local(Vector3(0, 0, -1))
+
+## Shooting Logic // Checks collision and spawns decals from array
+func _shoot():
+	var raycast = $Camera3D/RayCast3D
+	if raycast.is_colliding():
+		var collision_point = raycast.get_collision_point()
+		var collision_normal = raycast.get_collision_normal()
+		match paint_types[current_paint_index]:
+			\"blue\":
+				spawn_decal(ice_decal, collision_point, collision_normal)
+			\"green\":
+				spawn_decal(green_decal, collision_point, collision_normal)
+			\"pink\":
+				spawn_decal(pink_decal, collision_point, collision_normal)
+
+
+## Paint-type logic
+func _paintSwap():
+	if Input.is_action_just_pressed(\"switch_paint_next\"):
+		current_paint_index = (current_paint_index + 1) % paint_types.size()
+		print(\"Switched to:\", paint_types[current_paint_index])
+
+	if Input.is_action_just_pressed(\"switch_paint_previous\"):
+		current_paint_index = (current_paint_index - 1) % paint_types.size()
+		print(\"Switched to:\", paint_types[current_paint_index])
+
+
+## Totally not from a tutorial
+func _input(event: InputEvent):
+	if event is InputEventMouseMotion:
+		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
+		pitch -= event.relative.y * mouse_sensitivity
+		pitch = clamp(pitch, min_pitch, max_pitch)
+		camera.rotation_degrees.x = pitch
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q0peq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_130c2"]
+albedo_texture = ExtResource("1_778tq")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_v3we8"]
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+script = SubResource("GDScript_whaw8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_q0peq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.362829)
+
+[node name="Not a gun" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.199514, 0.0286276, -0.00146907, 0, -0.0435215, -0.198886, -0.0139408, 0.409702, -0.0210245, 0.282716, -0.270952, -0.311)
+layers = 2
+material_override = SubResource("StandardMaterial3D_130c2")
+mesh = SubResource("CylinderMesh_v3we8")
+skeleton = NodePath("../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -2.81746e-07, -1, 0, 6.4456, -4.37114e-08, 0, 0, -0.821658)
+hit_back_faces = false
