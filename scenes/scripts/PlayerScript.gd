@@ -12,7 +12,7 @@ var pitch: float = 0.0
 
 ## Movement
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+var JUMP_VELOCITY = 4.5
 
 ## Decals and Paint settings
 var ice_decal = preload("res://scenes/decals/BlueDecal.tscn")

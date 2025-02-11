@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0p6vapt7f7ul"]
 
 [ext_resource type="Texture2D" uid="uid://bxyhkiqt0y3ia" path="res://icon.svg" id="1_778tq"]
-[ext_resource type="Script" path="res://scenes/assets/PlayerScript.gd" id="1_odnct"]
+[ext_resource type="Script" path="res://scenes/scripts/PlayerScript.gd" id="1_odnct"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q0peq"]
 
