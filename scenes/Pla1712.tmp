@@ -4,7 +4,7 @@
 
 [sub_resource type="GDScript" id="GDScript_whaw8"]
 resource_name = "PlayerScript"
-script/source = "class_name Char
+script/source = "class_name PlayerCharacter
 extends CharacterBody3D
 
 ## Camera

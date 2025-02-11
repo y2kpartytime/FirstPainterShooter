@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cl822ll1c5yjj"]
 
 [ext_resource type="PackedScene" uid="uid://c0p6vapt7f7ul" path="res://scenes/Player.tscn" id="1_3yoq0"]
-[ext_resource type="PackedScene" uid="uid://bxomue60obbuq" path="res://scenes/Platform.tscn" id="2_u2ysr"]
+[ext_resource type="PackedScene" uid="uid://bxomue60obbuq" path="res://scenes/assets/Platform.tscn" id="2_u2ysr"]
 
 [node name="World" type="Node3D"]
 
@@ -13,35 +13,35 @@ transform = Transform3D(1, 0, 0, 0, 0.896664, 0.442711, 0, -0.442711, 0.896664, 
 
 [node name="Blocks" type="Node3D" parent="."]
 
-[node name="StaticBody3D" parent="." instance=ExtResource("2_u2ysr")]
+[node name="StaticBody3D" parent="Blocks" instance=ExtResource("2_u2ysr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0900459, 0, 0.319277)
 
-[node name="StaticBody3D5" parent="." instance=ExtResource("2_u2ysr")]
+[node name="StaticBody3D5" parent="Blocks" instance=ExtResource("2_u2ysr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0900459, 0, 6.25257)
 
-[node name="StaticBody3D6" parent="." instance=ExtResource("2_u2ysr")]
+[node name="StaticBody3D6" parent="Blocks" instance=ExtResource("2_u2ysr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0900459, 0, -5.64027)
 
-[node name="StaticBody3D8" parent="." instance=ExtResource("2_u2ysr")]
+[node name="StaticBody3D8" parent="Blocks" instance=ExtResource("2_u2ysr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80401, 0, 0.319277)
 
-[node name="StaticBody3D9" parent="." instance=ExtResource("2_u2ysr")]
+[node name="StaticBody3D9" parent="Blocks" instance=ExtResource("2_u2ysr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80401, 0, 6.25257)
 
-[node name="StaticBody3D10" parent="." instance=ExtResource("2_u2ysr")]
+[node name="StaticBody3D10" parent="Blocks" instance=ExtResource("2_u2ysr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80401, 0, -5.64027)
 
-[node name="StaticBody3D7" parent="." instance=ExtResource("2_u2ysr")]
+[node name="StaticBody3D7" parent="Blocks" instance=ExtResource("2_u2ysr")]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.0900459, 2.10804, -8.67911)
 
-[node name="StaticBody3D11" parent="." instance=ExtResource("2_u2ysr")]
+[node name="StaticBody3D11" parent="Blocks" instance=ExtResource("2_u2ysr")]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -5.84148, 2.10804, -8.67911)
 
-[node name="StaticBody3D2" parent="." instance=ExtResource("2_u2ysr")]
+[node name="StaticBody3D2" parent="Blocks" instance=ExtResource("2_u2ysr")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.98347, 2.07116, 6.10536)
 
-[node name="StaticBody3D3" parent="." instance=ExtResource("2_u2ysr")]
+[node name="StaticBody3D3" parent="Blocks" instance=ExtResource("2_u2ysr")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.98347, 2.07116, 0.135207)
 
-[node name="StaticBody3D4" parent="." instance=ExtResource("2_u2ysr")]
+[node name="StaticBody3D4" parent="Blocks" instance=ExtResource("2_u2ysr")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.96646, 2.07116, -5.78591)

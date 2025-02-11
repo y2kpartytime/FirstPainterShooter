@@ -4,8 +4,7 @@
 
 [sub_resource type="GDScript" id="GDScript_whaw8"]
 resource_name = "PlayerScript"
-script/source = "class_name Char
-extends CharacterBody3D
+script/source = "extends CharacterBody3D
 
 ## Camera
 @export var mouse_sensitivity: float = 0.1
@@ -41,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
-		if self.is_in_decal_area:
+		if is_in_decal_area == true:
 			velocity.y = JUMP_VELOCITY * 3
 
 
@@ -125,6 +124,7 @@ albedo_texture = ExtResource("1_778tq")
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = SubResource("GDScript_whaw8")
+mouse_sensitivity = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_q0peq")

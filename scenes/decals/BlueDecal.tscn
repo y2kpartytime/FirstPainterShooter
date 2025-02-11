@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh5wmwnridgcj"]
+
+[ext_resource type="Texture2D" uid="uid://ckrp4xlp3jq6" path="res://textures/blue_splat01.png" id="1_lcwmx"]
+
+[node name="Decal" type="Decal"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("1_lcwmx")
+distance_fade_enabled = true
+distance_fade_length = 100.0

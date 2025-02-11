@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b15bl0388lyun"]
+
+[ext_resource type="Texture2D" uid="uid://72m34oh55wik" path="res://textures/pink_splat01.png" id="1_apjgu"]
+
+[sub_resource type="GDScript" id="GDScript_4lj0y"]
+script/source = "extends Area3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+
+func _on_body_entered(body: CharacterBody3D) -> void:
+	if body is Char:
+		print(\"123\")
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w2n2p"]
+
+[node name="Decal" type="Decal"]
+sorting_offset = 0.4
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("1_apjgu")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(5.0815, 0, 0, 0, 5.0815, 0, 0, 0, 5.0815, 0, 0, 0)
+script = SubResource("GDScript_4lj0y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_w2n2p")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

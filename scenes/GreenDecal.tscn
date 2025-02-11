@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgf3ucdv1dvqe"]
-
-[ext_resource type="Texture2D" uid="uid://cp174l6v2ph6b" path="res://textures/green_splat01.png" id="1_slftf"]
-
-[node name="Decal" type="Decal"]
-layers = 3
-sorting_offset = 0.4
-texture_albedo = ExtResource("1_slftf")
